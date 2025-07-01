@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grytte</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <!-- favicon -->
+  <link rel="icon" type="image/png" href="images/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="images/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="images/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="images/favicon/site.webmanifest" />
+</head>
+<style>
+  @font-face {
+    font-family: "Gilroy-light";
+    src: url("fonts/Gilroy-Light.otf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Gilroy-extrabold";
+    src: url("fonts/Gilroy-ExtraBold.otf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+  }
+  body {
+    font-family: "Gilroy-light", sans-serif;
+    font-weight: light;
+  }
+  h1, h2 {
+    font-family: "Gilroy-extrabold", sans-serif;
+    font-weight: bold;
+  }
+  .font-bold {
+    font-family: "Gilroy-extrabold", sans-serif;
+    font-weight: bold;
+  }
+  .bg-main {
+    background-color: #f0f0f0;
+  }
+  .text-main {
+    color: #304661;
+  }
+  .bg-cta {
+    background-color: #D7DFED;
+  }
+  .bg-blue {
+    background-color: #304661;
+  }
+</style>
+<body class="bg-main">
+  <header class="flex flex-col justify-between min-h-screen">
+    <div>
+      <div class="flex items-center justify-center lg:justify-start pb-8 lg:-mb-24 px-24 pt-12">
+        <img src="images/Grytte-Logo.png" alt="Grytte Logo" class="w-18">
+      </div>
+      <div class="w-full text-main px-8 md:px-24 mb-12">
+        <p class="text-center mb-6">– Prelaunch Summer 2025 –</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-center">THE EDUCATIONAL NETWORK</h1>
+      </div>
+      <div id="user-container" class="flex gap-2 justify-center overflow-hidden"></div>
+      <div class="w-full p-8">
+        <p class="text-center">Connecting you with industry, academia, employers, and recruiters</p>
+      </div>
+    </div>
+    <!-- Call to action -->
+    <div class="bg-cta p-8 flex flex-col md:flex-row items-center gap-3 justify-center">
+      <span class="text-main text-2xl">Join the waiting list</span>
+      <div class="flex flex-col md:flex-row items-center gap-2">
+        <input 
+          type="email" 
+          placeholder="Enter your email" 
+          class="py-2 px-4 border border-gray-300 rounded-md w-full md:w-64 bg-white"
+        >
+        <button class="w-full md:w-fit text-white px-4 py-2 rounded-md bg-blue hover:bg-blue-400 transition duration-300">
+          Get Notified
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="px-12 py-24">
+      <!-- Organizations -->
+      <div class="flex flex-col items-start gap-6 xl:gap-3 mb-12">
+        <div class="w-3/5 text-main">
+          <span class="mb-4">SEARCH, EXPLORE, & FOLLOW</span>
+          <h2 class="font-bold text-3xl mb-1">Industry Organizations</h2>
+          <span>1,600+</span>
+        </div>
+        <div id="organization-container" class="w-full flex flex-wrap gap-2 justify-start"></div>
+      </div>
+      <!-- Certifications -->
+      <div class="flex flex-col items-start gap-6 xl:gap-3 mb-12">
+        <div class="w-3/5 text-main">
+          <span class="mb-4">SEARCH, EXPLORE, & FOLLOW</span>
+          <h2 class="font-bold text-3xl mb-1">Professional Certifications</h2>
+          <span>4,000+</span>
+        </div>
+        <div id="certification-container" class="w-full flex flex-wrap gap-1 justify-start"></div>
+      </div>
+      <!-- Areas -->
+      <div class="flex flex-col items-start gap-6 xl:gap-3 mb-12">
+        <div class="w-3/5 text-main">
+          <span class="mb-4">SEARCH, EXPLORE, & FOLLOW</span>
+          <h2 class="font-bold text-3xl mb-1">Workforce Related Areas</h2>
+          <span>1,000+</span>
+        </div>
+        <div id="areas-container" class="w-full flex flex-wrap gap-2 justify-start"></div>
+      </div>
+    </section>
+    <!-- Call to action -->
+    <section>
+      <div class="bg-cta p-8 flex flex-col md:flex-row items-center gap-3 justify-center">
+        <span class="text-main text-2xl">Join the waiting list</span>
+        <div class="flex flex-col md:flex-row items-center gap-2">
+          <input 
+            type="email" 
+            placeholder="Enter your email" 
+            class="py-2 px-4 border border-gray-300 rounded-md w-full md:w-64 bg-white"
+          >
+          <button class="w-full md:w-fit text-white px-4 py-2 rounded-md bg-blue hover:bg-blue-400 transition duration-300">
+            Get Notified
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="px-12 py-24">
+      <!-- Third party providers -->
+      <div class="flex flex-col items-start gap-6 xl:gap-3 mb-12">
+        <div class="w-3/5 text-main">
+          <span class="mb-4">FIND, CHOOSE & ENGAGE</span>
+          <h2 class="font-bold text-3xl mb-1">3rd Party Training Providers</h2>
+          <span>300+</span>
+        </div>
+        <div id="training-container" class="w-full flex flex-wrap gap-1 justify-start"></div>
+      </div>
+      <!-- Schools and colleges -->
+      <div class="flex flex-col items-start gap-6 xl:gap-3 mb-12">
+        <div class="w-3/5 text-main">
+          <span class="mb-4">FIND, CHOOSE & ENGAGE</span>
+          <h2 class="font-bold text-3xl mb-1">Schools, Colleges, & Universities</h2>
+          <span>10,000+</span>
+        </div>
+        <div id="school-container" class="w-full flex flex-wrap gap-1 justify-start"></div>
+      </div>
+      <!-- Exam Vouchers -->
+      <div class="flex flex-col items-start gap-6 xl:gap-3 mb-12">
+        <div class="w-3/5 text-main">
+          <span class="mb-4">FIND, CHOOSE & ENGAGE</span>
+          <h2 class="font-bold text-3xl mb-1">Discounts on Exam Vouchers</h2>
+          <span>100+</span>
+        </div>
+        <div id="voucher-container" class="w-full flex flex-wrap gap-1 justify-start"></div>
+      </div>
+    </section>
+    <!-- Call to action -->
+    <section>
+      <div class="bg-cta p-8 flex flex-col md:flex-row items-center gap-3 justify-center">
+        <span class="text-main text-2xl">Join the waiting list</span>
+        <div class="flex flex-col md:flex-row items-center gap-2">
+          <input 
+            type="email" 
+            placeholder="Enter your email" 
+            class="py-2 px-4 border border-gray-300 rounded-md w-full md:w-64 bg-white"
+          >
+          <button class="w-full md:w-fit text-white px-4 py-2 rounded-md bg-blue hover:bg-blue-400 transition duration-300">
+            Get Notified
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- Network -->
+    <section class="flex flex-col lg:flex-row justify-center items-center gap-4 p-12 h-auto lg:h-min-screen">      
+      <div class="w-full lg:w-fit text-main p-0 lg:pr-24 text-center lg:text-left">
+        <span class="text-xl mb-4">Connect with</span>
+        <h2 class="font-bold text-4xl mb-4">Classmates</h2>
+        <h2 class="font-bold text-4xl mb-4">Instructors</h2>
+        <h2 class="font-bold text-4xl mb-4">Marketplace</h2>
+      </div>
+      <div class="w-full lg:w-1/2 p-18">
+        <img src="images/network.png" alt="Network">
+      </div>
+    </section>
+    <!-- Call to action -->
+    <section>
+      <div class="bg-cta p-8 flex flex-col md:flex-row items-center gap-3 justify-center">
+        <span class="text-main text-2xl">Join the waiting list</span>
+        <div class="flex flex-col md:flex-row items-center gap-2">
+          <input 
+            type="email" 
+            placeholder="Enter your email" 
+            class="py-2 px-4 border border-gray-300 rounded-md w-full md:w-64 bg-white"
+          >
+          <button class="w-full md:w-fit text-white px-4 py-2 rounded-md bg-blue hover:bg-blue-400 transition duration-300">
+            Get Notified
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="px-12 py-24 text-main flex justify-center items-center">
+      <div>
+        <h2 class="font-bold text-4xl mb-4 text-center mb-12">Get ready for the third network</h2>
+        <div class="flex flex-col md:flex-row flex-wrap items-center justify-center gap-4">
+          <div class="w-[240px] rounded rounded-xl py-16 px-12 bg-white shadow-lg text-center">
+            <div class="flex justify-center items-center w-full mb-12">
+              <img src="images/ready_facebook.png" alt="facebook" class="w-28">
+            </div>
+            <div class="italic text-2xl">
+              <h3>The</h3>
+              <h3 class="font-bold">Social</h3>
+              <h3>Network</h3>
+            </div>
+          </div>
+          <div class="w-[240px] rounded rounded-xl py-16 px-12 bg-white shadow-lg text-center">
+            <div class="flex justify-center items-center w-ful mb-12">
+              <img src="images/ready_linkedin.png" alt="linkedin" class="w-28">
+            </div>
+            <div class="italic text-2xl">
+              <h3>The</h3>
+              <h3 class="font-bold">Professional</h3>
+              <h3>Network</h3>
+            </div>
+          </div>
+          <div class="w-[240px] rounded rounded-xl py-16 px-12 bg-white shadow-lg text-center">
+            <div class="flex justify-center items-center w-full mb-12">
+              <img src="images/ready_grytte.png" alt="grytte" class="w-28">
+            </div>
+            <div class="italic text-2xl">
+              <h3>The</h3>
+              <h3 class="font-bold">Educational</h3>
+              <h3>Network</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Call to action -->
+    <section>
+      <div class="bg-cta p-8 flex flex-col md:flex-row items-center gap-3 justify-center">
+        <span class="text-main text-2xl">Join the waiting list</span>
+        <div class="flex flex-col md:flex-row items-center gap-2">
+          <input 
+            type="email" 
+            placeholder="Enter your email" 
+            class="py-2 px-4 border border-gray-300 rounded-md w-full md:w-64 bg-white"
+          >
+          <button class="w-full md:w-fit text-white px-4 py-2 rounded-md bg-blue hover:bg-blue-400 transition duration-300">
+            Get Notified
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="w-full flex text-main bg-[#BCC6D9] text-main p-12">
+    <div class="w-full">
+      <div class="flex justify-between items-center mb-6">
+        <p class="font-bold text-xl">Grytte, Inc.</p>
+      </div>
+      <div class="mb-8">
+        <p>Headquarters:</p>
+        <p>100 East Pine Street, Suite #110,</p>
+        <p>Orlando, FL 32801 USA</p>
+      </div>
+      <div class="mb-8">
+        <p>General Email:</p>
+        <p>info@grytte.com</p>
+      </div>
+      <div class="mb-8">
+        <p>Industry & Academic Partnerships:</p>
+        <p>partners@grytte.com</p>
+      </div>
+      <div class="mb-8">
+        <p class="mb-2">Follow Grytte</p>
+        <div class="flex gap-3">
+          <a href="https://www.facebook.com/grytteinc" target="_blank" rel="noopener noreferrer">
+            <img src="images/icons/facebook-icon.svg" alt="Facebook" class="w-12">
+          </a>
+          <a href="https://www.linkedin.com/company/grytteinc/" target="_blank" rel="noopener noreferrer">
+            <img src="images/icons/linkedin-icon.svg" alt="linkedin" class="w-12">
+          </a>
+          <a href="https://www.grytte.com/" target="_blank" rel="noopener noreferrer">
+            <img src="images/icons/logo-symbol-grytte.svg" alt="grytte" class="w-12">
+          </a>
+          <a href="https://www.youtube.com/@GRYTTEINC" target="_blank" rel="noopener noreferrer">
+            <img src="images/icons/youtube-icon.svg" alt="youtube" class="w-12">
+          </a>
+          <a href="https://www.pinterest.com/grytteinc/" target="_blank" rel="noopener noreferrer">
+            <img src="images/icons/pinterest-icon.svg" alt="pinterest" class="w-12">
+          </a>
+          <a href="https://www.reddit.com/user/grytte_inc/" target="_blank" rel="noopener noreferrer">
+            <img src="images/icons/reddit-icon.svg" alt="reddit" class="w-12">
+          </a>
+        </div>
+      </div>
+      <div>
+        <p>Grytte © 2025</p>
+      </div>
+    </div>
+    <div class="hidden lg:flex w-full justify-end items-center">
+      <img src="images/logo-symbol.svg" alt="grytte" class="w-1/3 h-auto opacity-10">
+    </div>
+  </footer>
+
+  <script>
+    // dynamically load images in header
+    const imageContainer = document.getElementById('user-container');
+    for (let i = 1; i <= 7; i++) {
+      const img = document.createElement('img');
+      img.src = `images/header/user-${i}.png`;
+      img.alt = `Image ${i}`;
+      img.className = 'w-40';
+      imageContainer.appendChild(img);
+    }
+
+    // Reusable function to dynamically load images
+    function loadImages(containerId, folderPath, imageCount, altPrefix, className) {
+      const container = document.getElementById(containerId);
+      for (let i = 1; i <= imageCount; i++) {
+        const img = document.createElement('img');
+        img.src = `${folderPath}/${i}.png`;
+        img.alt = `${altPrefix} ${i}`;
+        img.className = className;
+        container.appendChild(img);
+      }
+    }
+
+    // Function to load pills dynamically
+    function loadAreas(areas) {
+      const container = document.getElementById('areas-container');
+      container.innerHTML = ''; // Clear existing content
+      areas.forEach(area => {
+        const pill = document.createElement('div');
+        pill.textContent = area;
+        pill.className = 'px-3 py-2 bg-white text-main text-sm font-medium rounded-lg cursor-pointer hover:text-blue-500 hover:bg-blue-100 transition duration-300';
+        container.appendChild(pill);
+      });
+    }
+
+    // Load images for organization section
+    loadImages('organization-container', 'images/organization', 52, 'Organization', 'w-24 rounded-lg');
+
+    // Load images for certification section
+    loadImages('certification-container', 'images/certification', 14, 'Certification', 'w-24');
+
+    // Load images for areas section
+    const areas = [
+      '3D Printing | Additive manufacturing',
+      'AECO',
+      'Aeronautics',
+      'Aerospace',
+      'AgriTech',
+      'Animatronics',
+      'AR / VR / MR',
+      'Architectural Design',
+      'Artificial Intelligence',
+      'Automotive Technology',
+      'Aviation',
+      'Bionics',
+      'Buildings & Construction',
+      'Business Analysis',
+      'CAD / CAM',
+      'CRM',
+      'Cybersecurity',
+      'Data Science',
+      'Design Thinking',
+      'DevOps',
+      'Digital Forensics',
+      'Digital Marketing',
+      'Digital Twins',
+      'Drones',
+      'EdTech',
+      'Electronics',
+      'Energy',
+      'Enterprise Architecture',
+      'Entrepreneurship',
+      'EPCM',
+      'ERP',
+      'Esports',
+      'Ethical Hacking',
+      'Event Management',
+      'Fashion Tech',
+      'Fiber Optics & Data Cabling',
+      'FinTech',
+      'Games Development',
+      'Generative AI',
+      'GRC',
+      'HealthTech',
+      'Hospitality',
+      'Human Resources',
+      'Internet of Things',
+      'ITSM',
+      'Kubernetes',
+      'Leadership',
+      'Learning & Development',
+      'Legal Tech',
+      'Linux',
+      'Machine Learning',
+      'Malware Analysis',
+      'Management',
+      'Manufacturing',
+      'Material Science',
+      'Mechatronics',
+      'Medical Technology',
+      'Metaverse',
+      'Modeling & Simulation',
+      'Nanotechnology',
+      'Networking',
+      'OKR',
+      'OSINT',
+      'Pentesting',
+      'Problem Solving',
+      'Product Management',
+      'Professional Sales',
+      'Programming',
+      'Project Management',
+      'Prompt Engineering',
+      'Python',
+      'Quality Assurance',
+      'Quantum Computing',
+      'Renewable Energy',
+      'Risk Management',
+      'Robotics',
+      'RPA',
+      'Satellite Communications',
+      'SCADA/ICS',
+      'Scrum',
+      'SEO',
+      'Service Provider',
+      'SIEM',
+      'Six Sigma',
+      'Smart City',
+      'SOA',
+      'Social Media Management',
+      'Software Architecture',
+      'Space Technology',
+      'SRE',
+      'STE(A)M',
+      'Supply Chain Management',
+      'SysAdmin',
+      'Transportation & Mobility',
+      'UX / UI',
+      'Wearable Technology',
+      'Wireless'
+    ];
+  
+    loadAreas(areas);
+
+    // Load images for training section
+    loadImages('training-container', 'images/training', 14, 'Training', 'w-24');
+
+    // Load images for school section
+    loadImages('school-container', 'images/school', 14, 'School', 'w-24');
+
+    // Load images for vouchers section
+    loadImages('voucher-container', 'images/voucher', 10, 'Voucher', 'w-24');
+  </script>
+</body>
+</html>
