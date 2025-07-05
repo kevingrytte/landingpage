@@ -55,6 +55,9 @@
   .bg-blue {
     background-color: #304661;
   }
+  .border-blue {
+    border: 2px solid #4784d0;
+  }
 </style>
 <body class="bg-main">
   <header class="flex flex-col justify-between min-h-screen">
@@ -96,7 +99,35 @@
           <h2 class="font-bold text-3xl mb-1">Industry Organizations</h2>
           <span>1,600+</span>
         </div>
-        <div id="organization-container" class="w-full flex flex-wrap gap-2 justify-start"></div>
+        <div class="w-full flex lg:flex-row flex-col-reverse gap-2">
+          <div id="organization-container" class="w-full flex flex-wrap gap-2 justify-start"></div>
+          <!-- Org Card -->
+          <div class="w-full lg:w-[460px] h-fit bg-white rounded-lg overflow-hidden">
+            <div class="bg-red-500 w-full h-16"></div>
+            <div class="flex flex-col lg:flex-row gap-2 p-4 items-center lg:items-start">
+              <img class="-mt-8 w-24 h-full rounded-lg border border-gray-200" src="images/organization/24.png" alt="">
+              <h4 class="font-bold text-lg">CompTIA, Inc.</h4>
+            </div>
+            <div class="p-4">
+              <h3 class="text-base mb-2">Certifications</h3>
+              <div class="flex flex-wrap gap-2">
+                <img class="w-16 h-16 rounded-lg border border-gray-200" src="images/organization/24/1.png" alt="">
+                <img class="w-16 h-16 rounded-lg border border-gray-200" src="images/organization/24/2.png" alt="">
+                <img class="w-16 h-16 rounded-lg border border-gray-200" src="images/organization/24/3.png" alt="">
+                <img class="w-16 h-16 rounded-lg border border-gray-200" src="images/organization/24/4.png" alt="">
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-base mb-2">Training Options</h3>
+              <div class="flex flex-wrap gap-2">
+                <img class="w-16 h-16 rounded-lg border border-gray-200" src="images/organization/24/T-1.png" alt="">
+                <img class="w-16 h-16 rounded-lg border border-gray-200" src="images/organization/24/T-2.png" alt="">
+                <img class="w-16 h-16 rounded-lg border border-gray-200" src="images/organization/24/T-3.png" alt="">
+                <img class="w-16 h-16 rounded-lg border border-gray-200" src="images/organization/24/T-4.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <!-- Certifications -->
       <div class="flex flex-col items-start gap-6 xl:gap-3 mb-12">
@@ -105,7 +136,7 @@
           <h2 class="font-bold text-3xl mb-1">Professional Certifications</h2>
           <span>4,000+</span>
         </div>
-        <div id="certification-container" class="w-full flex flex-wrap gap-1 justify-start"></div>
+        <div id="certification-container" class="w-full flex flex-wrap gap-2 justify-start"></div>
       </div>
       <!-- Areas -->
       <div class="flex flex-col items-start gap-6 xl:gap-3 mb-12">
@@ -150,7 +181,7 @@
           <h2 class="font-bold text-3xl mb-1">Schools, Colleges, & Universities</h2>
           <span>10,000+</span>
         </div>
-        <div id="school-container" class="w-full flex flex-wrap gap-1 justify-start"></div>
+        <div id="school-container" class="w-full flex flex-wrap gap-2 justify-start"></div>
       </div>
       <!-- Exam Vouchers -->
       <div class="flex flex-col items-start gap-6 xl:gap-3 mb-12">
@@ -159,7 +190,7 @@
           <h2 class="font-bold text-3xl mb-1">Discounts on Exam Vouchers</h2>
           <span>100+</span>
         </div>
-        <div id="voucher-container" class="w-full flex flex-wrap gap-1 justify-start"></div>
+        <div id="voucher-container" class="w-full flex flex-wrap gap-2 justify-start"></div>
       </div>
     </section>
     <!-- Call to action -->
@@ -324,12 +355,27 @@
     // Reusable function to dynamically load images
     function loadImages(containerId, folderPath, imageCount, altPrefix, className) {
       const container = document.getElementById(containerId);
+      let selectedButton = null;
       for (let i = 1; i <= imageCount; i++) {
+        const button = document.createElement('button');
+        button.className = 'rounded-lg overflow-hidden';
         const img = document.createElement('img');
         img.src = `${folderPath}/${i}.png`;
         img.alt = `${altPrefix} ${i}`;
         img.className = className;
-        container.appendChild(img);
+        button.appendChild(img);
+        button.addEventListener('click', function() {
+          if (selectedButton) {
+            selectedButton.classList.remove('border-blue');
+          }
+          button.classList.add('border-blue');
+          selectedButton = button;
+        });
+        if (i === 24) {
+          button.classList.add('border-blue');
+          selectedButton = button;
+        }
+        container.appendChild(button);
       }
     }
 
@@ -346,10 +392,10 @@
     }
 
     // Load images for organization section
-    loadImages('organization-container', 'images/organization', 52, 'Organization', 'w-24 rounded-lg');
+    loadImages('organization-container', 'images/organization', 52, 'Organization', 'w-22');
 
     // Load images for certification section
-    loadImages('certification-container', 'images/certification', 14, 'Certification', 'w-24');
+    loadImages('certification-container', 'images/certification', 14, 'Certification', 'w-22');
 
     // Load images for areas section
     const areas = [
@@ -455,13 +501,13 @@
     loadAreas(areas);
 
     // Load images for training section
-    loadImages('training-container', 'images/training', 15, 'Training', 'w-24 rounded-lg');
+    loadImages('training-container', 'images/training', 15, 'Training', 'w-22');
 
     // Load images for school section
-    loadImages('school-container', 'images/school', 14, 'School', 'w-24');
+    loadImages('school-container', 'images/school', 14, 'School', 'w-22');
 
     // Load images for vouchers section
-    loadImages('voucher-container', 'images/voucher', 10, 'Voucher', 'w-24');
+    loadImages('voucher-container', 'images/voucher', 10, 'Voucher', 'w-22');
   </script>
 </body>
 </html>
