@@ -1,17 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ================================ -->
+  <!-- BASIC META TAGS & CONFIGURATION -->
+  <!-- ================================ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grytte</title>
+  
+  <!-- Page title optimized for SEO and social sharing -->
+  <title>Grytte - The Educational Network | Connecting Industry, Academia & Careers</title>
+  
+  <!-- SEO meta tags for better search engine visibility -->
+  <meta name="description" content="Join Grytte, the educational network launching Summer 2025. Connect with 1,600+ industry organizations, 4,000+ certifications, and 10,000+ educational institutions.">
+  <meta name="keywords" content="education, professional development, certifications, training, career development, educational network">
+  
+  <!-- ========================== -->
+  <!-- SOCIAL MEDIA META TAGS     -->
+  <!-- ========================== -->
+  <!-- Open Graph tags for Facebook, LinkedIn, and other social platforms -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://grytte.com/">
+  <meta property="og:title" content="Grytte - The Educational Network">
+  <meta property="og:description" content="Connecting you with industry, academia, employers, and recruiters. Join the waiting list for Summer 2025 launch.">
+  <meta property="og:image" content="images/Grytte-Logo.png">
+
+  <!-- Twitter Card meta tags for Twitter sharing -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://grytte.com/">
+  <meta property="twitter:title" content="Grytte - The Educational Network">
+  <meta property="twitter:description" content="Connecting you with industry, academia, employers, and recruiters. Join the waiting list for Summer 2025 launch.">
+  <meta property="twitter:image" content="images/Grytte-Logo.png">
+  
+  <!-- ======================== -->
+  <!-- EXTERNAL DEPENDENCIES   -->
+  <!-- ======================== -->
+  <!-- Tailwind CSS v4 for utility-first styling -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-  <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- Font preloading for improved Core Web Vitals performance -->
+  <!-- These fonts are loaded before the page renders to prevent FOUC -->
+  <link rel="preload" href="fonts/Gilroy-Light.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="fonts/Gilroy-ExtraBold.otf" as="font" type="font/otf" crossorigin>
 
-  <!-- favicon -->
+  <!-- ==================== -->
+  <!-- FAVICON DECLARATIONS -->
+  <!-- ==================== -->
+  <!-- Multiple favicon formats for cross-browser and device compatibility -->
   <link rel="icon" type="image/png" href="images/favicon/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="images/favicon/favicon.svg" />
   <link rel="shortcut icon" href="images/favicon/favicon.ico" />
@@ -19,79 +53,219 @@
   <link rel="manifest" href="images/favicon/site.webmanifest" />
 </head>
 <style>
+  /* ================================ */
+  /* CSS CUSTOM PROPERTIES (VARIABLES) */
+  /* ================================ */
+  :root {
+    /* Color palette - Update these variables to change the entire site's color scheme */
+    --color-main-bg: #f0f0f0;      /* Light gray background for main sections */
+    --color-main-text: #304661;    /* Dark blue-gray for primary text */
+    --color-cta-bg: #D7DFED;       /* Light blue background for call-to-action sections */
+    --color-primary-blue: #304661; /* Primary brand blue for buttons and highlights */
+    --color-accent-blue: #4784d0;  /* Accent blue for borders and secondary elements */
+    --color-hover-blue: #3b82f6;   /* Hover state blue for interactive elements */
+    
+    /* Typography system with fallback fonts for better compatibility */
+    --font-light: "Gilroy-light", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-bold: "Gilroy-extrabold", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  /* =================== */
+  /* CUSTOM FONT LOADING */
+  /* =================== */
+  /* Custom Gilroy font faces - brand typography */
+  /* font-display: swap prevents invisible text during font swap period */
   @font-face {
     font-family: "Gilroy-light";
     src: url("fonts/Gilroy-Light.otf") format("truetype");
     font-weight: 400;
     font-style: normal;
+    font-display: swap; /* Improves loading performance */
   }
+  
   @font-face {
     font-family: "Gilroy-extrabold";
     src: url("fonts/Gilroy-ExtraBold.otf") format("truetype");
     font-weight: 700;
     font-style: normal;
+    font-display: swap; /* Improves loading performance */
   }
+
+  /* ===================== */
+  /* GLOBAL BASE STYLES   */
+  /* ===================== */
+  /* Enable smooth scrolling for anchor links and general navigation */
+  * {
+    scroll-behavior: smooth;
+  }
+
+  /* Base body typography using custom font with good line height for readability */
   body {
-    font-family: "Gilroy-light", sans-serif;
-    font-weight: light;
+    font-family: var(--font-light);
+    font-weight: 400;
+    line-height: 1.6; /* Improves readability */
   }
-  h1, h2 {
-    font-family: "Gilroy-extrabold", sans-serif;
-    font-weight: bold;
+  
+  /* All headings use the bold Gilroy font with tighter line height */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-bold);
+    font-weight: 700;
+    line-height: 1.2; /* Tighter line height for headings */
   }
+  
+  /* Utility class for applying bold font throughout the site */
   .font-bold {
-    font-family: "Gilroy-extrabold", sans-serif;
-    font-weight: bold;
+    font-family: var(--font-bold);
+    font-weight: 700;
   }
+  
+  /* ====================== */
+  /* CUSTOM UTILITY CLASSES */
+  /* ====================== */
+  /* These extend Tailwind with brand-specific colors and styles */
+  
+  /* Main background color used across sections */
   .bg-main {
-    background-color: #f0f0f0;
+    background-color: var(--color-main-bg);
   }
+  
+  /* Primary text color for headings and important content */
   .text-main {
-    color: #304661;
+    color: var(--color-main-text);
   }
+  
+  /* Call-to-action section background color */
   .bg-cta {
-    background-color: #D7DFED;
+    background-color: var(--color-cta-bg);
   }
+  
+  /* Primary brand blue background for buttons and highlights */
   .bg-blue {
-    background-color: #304661;
+    background-color: var(--color-primary-blue);
   }
+  
+  /* Accent blue border for selected/focused elements */
   .border-blue {
-    border: 2px solid #4784d0;
+    border: 2px solid var(--color-accent-blue);
+  }
+
+  /* ======================== */
+  /* COMPONENT SPECIFIC STYLES */
+  /* ======================== */
+  
+  /* Primary button styling with hover and focus states */
+  .btn-primary {
+    background-color: var(--color-primary-blue);
+    transition: all 0.3s ease; /* Smooth transitions for all properties */
+  }
+
+  /* Button hover effect with subtle lift and color change */
+  .btn-primary:hover {
+    background-color: var(--color-hover-blue);
+    transform: translateY(-1px); /* Subtle lift effect */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  }
+
+  /* Focus state for keyboard navigation accessibility */
+  .btn-primary:focus {
+    outline: 2px solid var(--color-accent-blue);
+    outline-offset: 2px;
+  }
+
+  /* Interactive image grid items with hover effects */
+  .image-grid-item {
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  /* Image hover effect for better user feedback */
+  .image-grid-item:hover {
+    transform: scale(1.05); /* Subtle zoom effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add depth on hover */
+  }
+
+  /* Loading state utility class */
+  .loading {
+    opacity: 0.5;
+    pointer-events: none; /* Prevent interaction during loading */
+  }
+
+  /* ========================== */
+  /* ACCESSIBILITY & PERFORMANCE */
+  /* ========================== */
+  /* Respect user's motion preferences for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 </style>
-<body class="bg-main">
-  <header class="flex flex-col justify-between">
-    <div>
-      <div class="flex items-center justify-center lg:justify-start pb-8 lg:-mb-24 px-24 pt-12">
-        <img src="images/Grytte-Logo.png" alt="Grytte Logo" class="w-18">
+
+<!-- ======================= -->
+<!-- MAIN DOCUMENT BODY     -->
+<!-- ======================= -->
+<body class="bg-main"> <!-- Apply main background color to entire page -->
+  <!-- ================================= -->
+  <!-- MAIN HEADER SECTION               -->
+  <!-- ================================= -->
+  <!-- Contains logo, hero content, and primary signup form -->
+  <header class="flex flex-col justify-between" role="banner">
+    <div> <!-- Main header content wrapper -->
+      <!-- Logo section - responsive positioning -->
+      <div class="flex items-center justify-center lg:justify-start pb-8 lg:-mb-24 px-4 md:px-24 pt-12">
+        <img src="images/Grytte-Logo.png" alt="Grytte - The Educational Network Logo" class="w-18 h-auto">
       </div>
+      <!-- Main hero text section -->
       <div class="w-full text-main px-8 md:px-24 mb-8">
-        <p class="text-center mb-6">– Prelaunch Summer 2025 –</p>
-        <h1 class="text-4xl md:text-5xl font-bold text-center">THE EDUCATIONAL NETWORK</h1>
+        <!-- Launch timeline indicator -->
+        <p class="text-center mb-6 text-sm md:text-base font-medium tracking-wide">– Prelaunch Summer 2025 –</p>
+        <!-- Main page heading - primary value proposition -->
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center leading-tight">THE EDUCATIONAL NETWORK</h1>
       </div>
-      <div class="w-full flex items-center justify-center">
-        <div class="w-fit flex justify-center">
-          <img class="w-[32%]" src="images/header.png" alt="">
+      <!-- Hero content section with image and signup form -->
+      <div class="w-full flex items-center justify-center px-4">
+        <div class="w-full max-w-6xl flex flex-col lg:flex-row items-center justify-center gap-8">
+          <!-- Hero image - illustrates the network concept -->
+          <div class="flex-shrink-0">
+            <img class="w-full max-w-md" src="images/header.png" alt="Educational network connecting professionals, students, and organizations" loading="lazy">
+          </div>
           
-          <div class="w-fit flex items-center">
-            <div class="p-8 flex flex-col items-center gap-3 justify-center bg-white rounded shadow-lg border border-gray-50">
-              <span class="text-main text-2xl">Join the waiting list</span>
-              <div class="flex flex-col items-center gap-2">
+          <!-- Primary email signup form -->
+          <div class="flex-shrink-0">
+            <!-- Main call-to-action form with accessibility features -->
+            <form class="p-6 md:p-8 flex flex-col items-center gap-4 bg-white rounded-lg shadow-xl border border-gray-100 w-full max-w-sm" id="waitlist-form" aria-label="Join waiting list form">
+              <h2 class="text-main text-xl md:text-2xl font-bold text-center">Join the waiting list</h2>
+              <div class="flex flex-col items-center gap-3 w-full">
+                <!-- Screen reader only label for accessibility -->
+                <label for="email-header" class="sr-only">Email address</label>
+                <!-- Email input with focus states and validation -->
                 <input 
                   type="email" 
+                  id="email-header"
+                  name="email"
                   placeholder="Enter your email" 
-                  class="py-2 px-4 border border-gray-300 rounded-md w-full md:w-64 bg-white"
+                  class="py-3 px-4 border border-gray-300 rounded-lg w-full bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                  required
+                  aria-describedby="email-error"
                 >
-                <button class="w-full text-white px-4 py-2 rounded-md bg-blue hover:bg-blue-400 transition duration-300">
-                  Get Notified
+                <!-- Error message container for form validation -->
+                <div id="email-error" class="text-red-600 text-sm hidden" role="alert"></div>
+                <!-- Submit button with loading states -->
+                <button type="submit" class="w-full text-white px-6 py-3 rounded-lg btn-primary font-medium">
+                  <span class="submit-text">Get Notified</span>
+                  <span class="loading-text hidden">Joining...</span>
                 </button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
+      <!-- Value proposition tagline -->
       <div class="w-full p-6">
-        <p class="text-center text-lg">Connecting you with industry, academia, employers, and recruiters</p>
+        <p class="text-center text-lg md:text-xl text-main max-w-3xl mx-auto">Connecting you with industry, academia, employers, and recruiters</p>
       </div>
     </div>
   </header>
@@ -371,123 +545,58 @@
       });
     }
 
-    // Load images for organization section
-    loadImages('organization-container', 'images/organization', 52, 'Organization', 'w-22');
+    // Initialize on DOM loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      try {
+        // Load images with error handling
+        const configs = {
+          organization: { count: 52, defaultSelected: 24 },
+          certification: { count: 33, defaultSelected: null },
+          training: { count: 15, defaultSelected: null },
+          school: { count: 14, defaultSelected: null },
+          voucher: { count: 10, defaultSelected: null }
+        };
+        
+        Object.entries(configs).forEach(([key, config]) => {
+          const containerId = `${key}-container`;
+          const folderPath = `images/${key}`;
+          const altPrefix = key.charAt(0).toUpperCase() + key.slice(1);
+          
+          loadImages(containerId, folderPath, config.count, altPrefix, 'w-22', config.defaultSelected);
+        });
 
-    // Load images for certification section
-    loadImages('certification-container', 'images/certification', 14, 'Certification', 'w-22');
-
-    // Load images for areas section
-    const areas = [
-      '3D Printing | Additive manufacturing',
-      'AECO',
-      'Aeronautics',
-      'Aerospace',
-      'AgriTech',
-      'Animatronics',
-      'AR / VR / MR',
-      'Architectural Design',
-      'Artificial Intelligence',
-      'Automotive Technology',
-      'Aviation',
-      'Bionics',
-      'Buildings & Construction',
-      'Business Analysis',
-      'CAD / CAM',
-      'CRM',
-      'Cybersecurity',
-      'Data Science',
-      'Design Thinking',
-      'DevOps',
-      'Digital Forensics',
-      'Digital Marketing',
-      'Digital Twins',
-      'Drones',
-      'EdTech',
-      'Electronics',
-      'Energy',
-      'Enterprise Architecture',
-      'Entrepreneurship',
-      'EPCM',
-      'ERP',
-      'Esports',
-      'Ethical Hacking',
-      'Event Management',
-      'Fashion Tech',
-      'Fiber Optics & Data Cabling',
-      'FinTech',
-      'Games Development',
-      'Generative AI',
-      'GRC',
-      'HealthTech',
-      'Hospitality',
-      'Human Resources',
-      'Internet of Things',
-      'ITSM',
-      'Kubernetes',
-      'Leadership',
-      'Learning & Development',
-      'Legal Tech',
-      'Linux',
-      'Machine Learning',
-      'Malware Analysis',
-      'Management',
-      'Manufacturing',
-      'Material Science',
-      'Mechatronics',
-      'Medical Technology',
-      'Metaverse',
-      'Modeling & Simulation',
-      'Nanotechnology',
-      'Networking',
-      'OKR',
-      'OSINT',
-      'Pentesting',
-      'Problem Solving',
-      'Product Management',
-      'Professional Sales',
-      'Programming',
-      'Project Management',
-      'Prompt Engineering',
-      'Python',
-      'Quality Assurance',
-      'Quantum Computing',
-      'Renewable Energy',
-      'Risk Management',
-      'Robotics',
-      'RPA',
-      'Satellite Communications',
-      'SCADA/ICS',
-      'Scrum',
-      'SEO',
-      'Service Provider',
-      'SIEM',
-      'Six Sigma',
-      'Smart City',
-      'SOA',
-      'Social Media Management',
-      'Software Architecture',
-      'Space Technology',
-      'SRE',
-      'STE(A)M',
-      'Supply Chain Management',
-      'SysAdmin',
-      'Transportation & Mobility',
-      'UX / UI',
-      'Wearable Technology',
-      'Wireless'
-    ];
-  
-    loadAreas(areas);
-
-    // Load images for training section
-    loadImages('training-container', 'images/training', 15, 'Training', 'w-22');
-
-    // Load images for school section
-    loadImages('school-container', 'images/school', 14, 'School', 'w-22');
-
-    // Load images for vouchers section
-    loadImages('voucher-container', 'images/voucher', 10, 'Voucher', 'w-22');
+        // Load workforce areas
+        const areas = [
+          '3D Printing | Additive manufacturing', 'AECO', 'Aeronautics', 'Aerospace', 'AgriTech',
+          'Animatronics', 'AR / VR / MR', 'Architectural Design', 'Artificial Intelligence', 'Automotive Technology',
+          'Aviation', 'Bionics', 'Buildings & Construction', 'Business Analysis', 'CAD / CAM',
+          'CRM', 'Cybersecurity', 'Data Science', 'Design Thinking', 'DevOps',
+          'Digital Forensics', 'Digital Marketing', 'Digital Twins', 'Drones', 'EdTech',
+          'Electronics', 'Energy', 'Enterprise Architecture', 'Entrepreneurship', 'EPCM',
+          'ERP', 'Esports', 'Ethical Hacking', 'Event Management', 'Fashion Tech',
+          'Fiber Optics & Data Cabling', 'FinTech', 'Games Development', 'Generative AI', 'GRC',
+          'HealthTech', 'Hospitality', 'Human Resources', 'Internet of Things', 'ITSM',
+          'Kubernetes', 'Leadership', 'Learning & Development', 'Legal Tech', 'Linux',
+          'Machine Learning', 'Malware Analysis', 'Management', 'Manufacturing', 'Material Science',
+          'Mechatronics', 'Medical Technology', 'Metaverse', 'Modeling & Simulation', 'Nanotechnology',
+          'Networking', 'OKR', 'OSINT', 'Pentesting', 'Problem Solving',
+          'Product Management', 'Professional Sales', 'Programming', 'Project Management', 'Prompt Engineering',
+          'Python', 'Quality Assurance', 'Quantum Computing', 'Renewable Energy', 'Risk Management',
+          'Robotics', 'RPA', 'Satellite Communications', 'SCADA/ICS', 'Scrum',
+          'SEO', 'Service Provider', 'SIEM', 'Six Sigma', 'Smart City',
+          'SOA', 'Social Media Management', 'Software Architecture', 'Space Technology', 'SRE',
+          'STE(A)M', 'Supply Chain Management', 'SysAdmin', 'Transportation & Mobility', 'UX / UI',
+          'Wearable Technology', 'Wireless'
+        ];
+        
+        loadAreas(areas);
+        
+        console.log('Grytte landing page initialized successfully');
+        
+      } catch (error) {
+        console.error('Error initializing page:', error);
+      }
+    });
   </script>
 </body>
 </html>
