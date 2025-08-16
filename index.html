@@ -280,30 +280,24 @@
           <span>1,600+</span>
         </div>
         <div class="w-full flex lg:flex-row flex-col-reverse gap-2">
-          <div id="organization-container" class="w-full flex flex-wrap gap-2 justify-start"></div>
+          <div id="organization-container" class="w-full h-fit flex flex-wrap gap-2 justify-start"></div>
           <!-- Org Card -->
-          <div class="w-full lg:w-[460px] h-fit bg-white rounded-lg overflow-hidden shadow-xl">
+          <div id="org-card" class="w-full lg:w-[460px] h-fit bg-white rounded-lg overflow-hidden shadow-xl">
             <div class="bg-red-500 w-full h-16"></div>
             <div class="flex flex-col lg:flex-row gap-2 p-4 items-center lg:items-start">
-              <img class="-mt-8 w-24 h-full rounded-lg border border-gray-200" src="images/organization/24.png" alt="">
-              <h4 class="font-bold text-lg">CompTIA, Inc.</h4>
+              <img id="org-card-logo" class="-mt-8 w-24 h-full rounded-lg border border-gray-200" src="images/organization/1-comptia.png" alt="">
+              <h4 id="org-card-name" class="font-bold text-lg">CompTIA</h4>
             </div>
             <div class="p-4">
               <h3 class="text-base mb-2">Certifications</h3>
-              <div class="flex flex-wrap gap-2">
-                <img class="w-16 h-16 rounded-lg border border-gray-200" src="images/organization/24/1.png" alt="">
-                <img class="w-16 h-16 rounded-lg border border-gray-200" src="images/organization/24/2.png" alt="">
-                <img class="w-16 h-16 rounded-lg border border-gray-200" src="images/organization/24/3.png" alt="">
-                <img class="w-16 h-16 rounded-lg border border-gray-200" src="images/organization/24/4.png" alt="">
+              <div id="org-certifications" class="flex flex-wrap gap-2">
+                <!-- Dynamic certification content will be loaded here -->
               </div>
             </div>
             <div class="p-4">
               <h3 class="text-base mb-2">Training Options</h3>
-              <div class="flex flex-wrap gap-2">
-                <img class="w-16 h-16 rounded-lg border border-gray-200" src="images/organization/24/T-1.png" alt="">
-                <img class="w-16 h-16 rounded-lg border border-gray-200" src="images/organization/24/T-2.png" alt="">
-                <img class="w-16 h-16 rounded-lg border border-gray-200" src="images/organization/24/T-3.png" alt="">
-                <img class="w-16 h-16 rounded-lg border border-gray-200" src="images/organization/24/T-4.png" alt="">
+              <div id="org-training" class="flex flex-wrap gap-2">
+                <!-- Dynamic training content will be loaded here -->
               </div>
             </div>
           </div>
@@ -316,7 +310,29 @@
           <h2 class="font-bold text-3xl mb-1">Professional Certifications</h2>
           <span>4,000+</span>
         </div>
-        <div id="certification-container" class="w-full flex flex-wrap gap-2 justify-start"></div>
+        <div class="w-full flex lg:flex-row flex-col-reverse gap-2">
+          <div id="certification-container" class="w-full h-fit flex flex-wrap gap-2 justify-start"></div>
+          <!-- Certification Card -->
+          <div id="cert-card" class="w-full lg:w-[460px] h-fit bg-white rounded-lg overflow-hidden shadow-xl">
+            <div class="bg-blue-500 w-full h-16"></div>
+            <div class="flex flex-col lg:flex-row gap-2 p-4 items-center lg:items-start">
+              <img id="cert-card-logo" class="-mt-8 w-24 h-full rounded-lg border border-gray-200" src="images/certification/3-kubernetes.png" alt="">
+              <h4 id="cert-card-name" class="font-bold text-lg">Certified Kubernetes Security Specialist</h4>
+            </div>
+            <div class="p-4">
+              <h3 class="text-base mb-2">Training Options</h3>
+              <div id="cert-training" class="flex flex-wrap gap-2">
+                <!-- Dynamic training content will be loaded here -->
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-base mb-2">Related Certifications</h3>
+              <div id="cert-related" class="flex flex-wrap gap-2">
+                <!-- Dynamic related certifications content will be loaded here -->
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <!-- Areas -->
       <div class="flex flex-col items-start gap-6 xl:gap-3 mb-12">
@@ -506,7 +522,351 @@
   </footer>
 
   <script>
-    // Reusable function to dynamically load images
+    // Certification data with renamed file structure
+    const certificationData = [
+      { id: 1, name: 'kubernetes', fileName: '1-kubernetes.png', displayName: 'Kubernetes Administrator' },
+      { id: 2, name: 'kubernetes', fileName: '2-kubernetes.png', displayName: 'Kubernetes Application Developer' },
+      { id: 3, name: 'kubernetes', fileName: '3-kubernetes.png', displayName: 'Kubernetes Security Specialist' },
+      { id: 4, name: 'kubernetes', fileName: '4-kubernetes.png', displayName: 'Kubernetes and Cloud Native Associate' },
+      { id: 5, name: 'kubernetes', fileName: '5-kubernetes.png', displayName: 'Kubernetes and Cloud Security Associate' },
+      { id: 6, name: 'cncf', fileName: '6-cncf.png', displayName: 'Cloud Native Platform Engineering Associate' },
+      { id: 7, name: 'unity', fileName: '7-unity.png', displayName: 'Unity Certified Associate Game Developer' },
+      { id: 8, name: 'unity', fileName: '8-unity.png', displayName: 'Unity Certified User VR Developer' },
+      { id: 9, name: 'lpi', fileName: '9-lpi.png', displayName: 'Linux Professional Institute - Linux Essentials' },
+      { id: 10, name: 'lpi', fileName: '10-lpi.png', displayName: 'Linux Professional Institute - Security Essentials' },
+      { id: 11, name: 'lpi', fileName: '11-lpi.png', displayName: 'Linux Professional Institute - Open Source Essentials' },
+      { id: 12, name: 'pythoninstitute', fileName: '12-pythoninstitute.png', displayName: 'Python Institute Entry-Level Python' },
+      { id: 13, name: 'pythoninstitute', fileName: '13-pythoninstitute.png', displayName: 'Python Institute Associate Python' },
+      { id: 14, name: 'pythoninstitute', fileName: '14-pythoninstitute.png', displayName: 'Python Institute Associate Data Analyst' },
+      { id: 15, name: 'akylade', fileName: '15-akylade.png', displayName: 'Akylade AI Security Practitioner' },
+      { id: 16, name: 'akylade', fileName: '16-akylade.png', displayName: 'Akylade Certified C# Developer' },
+      { id: 17, name: 'akylade', fileName: '17-akylade.png', displayName: 'Akylade Certified XR Developer' },
+      { id: 18, name: 'istqb', fileName: '18-istqb.png', displayName: 'ISTQB CTFL Foundation Level' },
+      { id: 19, name: 'redhat', fileName: '19-redhat.png', displayName: 'Red Hat Certified System Administrator' },
+      { id: 20, name: 'aws', fileName: '20-aws.png', displayName: 'AWS Cloud Practitioner Foundational' },
+      { id: 21, name: 'aws', fileName: '21-aws.png', displayName: 'AWS Solutions Architect Associate' },
+      { id: 22, name: 'aws', fileName: '22-aws.png', displayName: 'AWS Machine Learning Engineer Associate' },
+      { id: 23, name: 'digitalcrest', fileName: '23-digitalcrest.png', displayName: 'Digital Crest Cloud AI Solutions Architect' },
+      { id: 24, name: 'linux', fileName: '24-linux.png', displayName: 'Linux Foundation Git SkillCred' },
+      { id: 25, name: 'linux', fileName: '25-linux.png', displayName: 'Linux Foundation Regex SkillCred' },
+      { id: 26, name: 'certnexus', fileName: '26-certnexus.png', displayName: 'CertNexus CFR' },
+      { id: 27, name: 'rblp', fileName: '27-rblp.png', displayName: 'RBLP Professional' },
+      { id: 28, name: 'openjsf', fileName: '28-openjsf.png', displayName: 'OpenJS Foundation Node.js Services Developer' },
+      { id: 29, name: 'riscv', fileName: '29-riscv.png', displayName: 'RISC-V Foundational Associate' },
+      { id: 30, name: 'comptia', fileName: '30-comptia.png', displayName: 'CompTIA DataX' },
+      { id: 31, name: 'comptia', fileName: '31-comptia.png', displayName: 'CompTIA AI' },
+      { id: 32, name: 'comptia', fileName: '32-comptia.png', displayName: 'CompTIA Project+' },
+      { id: 33, name: 'comptia', fileName: '33-comptia.png', displayName: 'CompTIA Security+' }
+    ];
+
+    // Organization data with renamed file structure
+    const organizationData = [
+      { id: 1, name: 'comptia', fileName: '1-comptia.png', displayName: 'CompTIA' },
+      { id: 2, name: 'redhat', fileName: '2-redhat.png', displayName: 'Red Hat' },
+      { id: 3, name: 'pytorch', fileName: '3-pytorch.png', displayName: 'PyTorch' },
+      { id: 4, name: 'prometheus', fileName: '4-prometheus.png', displayName: 'Prometheus' },
+      { id: 5, name: 'graphql', fileName: '5-graphql.png', displayName: 'GraphQL' },
+      { id: 6, name: 'ibm', fileName: '6-ibm.png', displayName: 'IBM' },
+      { id: 7, name: 'linux', fileName: '7-linux.png', displayName: 'Linux Foundation' },
+      { id: 8, name: 'cncf', fileName: '8-cncf.png', displayName: 'CNCF' },
+      { id: 9, name: 'helm', fileName: '9-helm.png', displayName: 'Helm' },
+      { id: 10, name: 'finos', fileName: '10-finos.png', displayName: 'FINOS' },
+      { id: 11, name: 'openssf', fileName: '11-openssf.png', displayName: 'OpenSSF' },
+      { id: 12, name: 'pythoninstitute', fileName: '12-pythoninstitute.png', displayName: 'Python Institute' },
+      { id: 13, name: 'cinstitute', fileName: '13-cinstitute.png', displayName: 'C++ Institute' },
+      { id: 14, name: 'jsinstitute', fileName: '14-jsinstitute.png', displayName: 'JS Institute' },
+      { id: 15, name: 'lpi', fileName: '15-lpi.png', displayName: 'Linux Professional Institute' },
+      { id: 16, name: 'aws', fileName: '16-aws.png', displayName: 'Amazon Web Services' },
+      { id: 17, name: 'riscv', fileName: '17-riscv.png', displayName: 'RISC-V' },
+      { id: 18, name: 'opentofu', fileName: '18-opentofu.png', displayName: 'OpenTofu' },
+      { id: 19, name: 'opentelemetry', fileName: '19-opentelemetry.png', displayName: 'OpenTelemetry' },
+      { id: 20, name: 'certnexus', fileName: '20-certnexus.png', displayName: 'CertNexus' },
+      { id: 21, name: 'kodekloud', fileName: '21-kodekloud.png', displayName: 'KodeKloud' },
+      { id: 22, name: 'rblp', fileName: '22-rblp.png', displayName: 'RBLP' },
+      { id: 23, name: 'datacamp', fileName: '23-datacamp.png', displayName: 'DataCamp' },
+      { id: 24, name: 'finops', fileName: '24-finops.png', displayName: 'FinOps Foundation' },
+      { id: 25, name: 'openjsf', fileName: '25-openjsf.png', displayName: 'OpenJS Foundation' },
+      { id: 26, name: 'google', fileName: '26-google.png', displayName: 'Google' },
+      { id: 27, name: 'cilium', fileName: '27-cilium.png', displayName: 'Cilium' },
+      { id: 28, name: 'akylade', fileName: '28-akylade.png', displayName: 'Akylade' },
+      { id: 29, name: 'brightest', fileName: '29-brightest.png', displayName: 'Brightest' },
+      { id: 30, name: 'istqb', fileName: '30-istqb.png', displayName: 'ISTQB' },
+      { id: 31, name: 'jenkins', fileName: '31-jenkins.png', displayName: 'Jenkins' },
+      { id: 32, name: 'hashicorp', fileName: '32-hashicorp.png', displayName: 'HashiCorp' },
+      { id: 33, name: 'unity', fileName: '33-unity.png', displayName: 'Unity' }
+    ];
+
+    // Training options data for the new structure
+    const trainingOptionsData = {
+      'comptia': [
+        { fileName: '1-diontraining.png', displayName: 'Dion Training' },
+        { fileName: '2-kodekloud.png', displayName: 'KodeKloud' },
+        { fileName: '3-linkedinlearning.png', displayName: 'LinkedIn Learning' },
+        { fileName: '4-coursera.png', displayName: 'Coursera' }
+      ]
+      // You can add more organizations and their training options here as needed
+    };
+
+    // Organization certifications data - maps organizations to their specific certifications
+    const organizationCertificationsData = {
+      'comptia': [
+        { fileName: '30-comptia.png', displayName: 'CompTIA DataX' },
+        { fileName: '31-comptia.png', displayName: 'CompTIA AI' },
+        { fileName: '32-comptia.png', displayName: 'CompTIA Project+' },
+        { fileName: '33-comptia.png', displayName: 'CompTIA Security+' }
+      ]
+      // You can add more organizations and their certifications here as needed
+    };
+
+    // Certification training options data
+    const certificationTrainingOptionsData = {
+      'kubernetes': [
+        { fileName: '2-kodekloud.png', displayName: 'KodeKloud' },
+        { fileName: '7-the-linux-foundation.png', displayName: 'The Linux Foundation' },
+        { fileName: '5-pluralsight.png', displayName: 'Pluralsight' },
+        { fileName: '6-udemy.png', displayName: 'Udemy' }
+      ]
+      // You can add more certification types and their training options here
+    };
+
+    // Certification related certifications data
+    const certificationRelatedData = {
+      'kubernetes': [
+        { fileName: '1-kubernetes.png', displayName: 'Kubernetes Administrator' },
+        { fileName: '2-kubernetes.png', displayName: 'Kubernetes Application Developer' },
+        { fileName: '4-kubernetes.png', displayName: 'Kubernetes and Cloud Native Associate' },
+        { fileName: '5-kubernetes.png', displayName: 'Kubernetes and Cloud Security Associate' }
+      ]
+      // You can add more certification types and their related certifications here
+    };
+
+    // Function to load certification images with new structure
+    function loadCertifications() {
+      const container = document.getElementById('certification-container');
+      let selectedButton = null;
+      
+      certificationData.forEach(cert => {
+        const button = document.createElement('button');
+        button.className = 'rounded-lg overflow-hidden';
+        button.dataset.certName = cert.name;
+        button.dataset.certId = cert.id;
+        
+        const img = document.createElement('img');
+        img.src = `images/certification/${cert.fileName}`;
+        img.alt = cert.displayName;
+        img.className = 'w-22';
+        
+        button.appendChild(img);
+        button.addEventListener('click', function() {
+          if (selectedButton) {
+            selectedButton.classList.remove('border-blue');
+          }
+          button.classList.add('border-blue');
+          selectedButton = button;
+          loadCertificationCards(cert.name, cert.fileName, cert.displayName);
+        });
+        
+        // Default selection (Certified Kubernetes Security Specialist - ID 3)
+        if (cert.id === 3) {
+          button.classList.add('border-blue');
+          selectedButton = button;
+          loadCertificationCards(cert.name, cert.fileName, cert.displayName);
+        }
+        
+        container.appendChild(button);
+      });
+    }
+
+    // Function to load organization images with new structure
+    function loadOrganizations() {
+      const container = document.getElementById('organization-container');
+      let selectedButton = null;
+      
+      organizationData.forEach(org => {
+        const button = document.createElement('button');
+        button.className = 'rounded-lg overflow-hidden';
+        button.dataset.orgName = org.name;
+        
+        const img = document.createElement('img');
+        img.src = `images/organization/${org.fileName}`;
+        img.alt = org.displayName;
+        img.className = 'w-22';
+        
+        button.appendChild(img);
+        button.addEventListener('click', function() {
+          if (selectedButton) {
+            selectedButton.classList.remove('border-blue');
+          }
+          button.classList.add('border-blue');
+          selectedButton = button;
+          loadOrganizationCards(org.name);
+        });
+        
+        // Default selection (CompTIA)
+        if (org.id === 1) {
+          button.classList.add('border-blue');
+          selectedButton = button;
+          loadOrganizationCards(org.name);
+        }
+        
+        container.appendChild(button);
+      });
+    }
+
+    // Function to load certification cards based on selected certification
+    function loadCertificationCards(certName, certFileName, certDisplayName) {
+      // Update card logo and name
+      document.getElementById('cert-card-logo').src = `images/certification/${certFileName}`;
+      document.getElementById('cert-card-logo').alt = certDisplayName;
+      document.getElementById('cert-card-name').textContent = certDisplayName;
+      
+      // Clear existing content
+      document.getElementById('cert-training').innerHTML = '';
+      document.getElementById('cert-related').innerHTML = '';
+      
+      // Load training options for the certification
+      loadCertificationTrainingOptions(certName);
+      
+      // Load related certifications
+      loadCertificationRelated(certName);
+    }
+
+    // Function to load certification training options from the training-options folder
+    function loadCertificationTrainingOptions(certName) {
+      const container = document.getElementById('cert-training');
+      const trainingOptions = certificationTrainingOptionsData[certName];
+      
+      if (trainingOptions) {
+        trainingOptions.forEach(option => {
+          const img = document.createElement('img');
+          img.src = `images/training-options/${option.fileName}`;
+          img.className = 'w-16 h-16 rounded-lg border border-gray-200';
+          img.alt = option.displayName;
+          
+          // Add error handling to hide images that don't exist
+          img.onerror = function() {
+            this.style.display = 'none';
+          };
+          
+          container.appendChild(img);
+        });
+      }
+    }
+
+    // Function to load related certifications from the certification folder
+    function loadCertificationRelated(certName) {
+      const container = document.getElementById('cert-related');
+      const relatedCerts = certificationRelatedData[certName];
+      
+      if (relatedCerts) {
+        relatedCerts.forEach(cert => {
+          const img = document.createElement('img');
+          img.src = `images/certification/${cert.fileName}`;
+          img.className = 'w-16 h-16 rounded-lg border border-gray-200';
+          img.alt = cert.displayName;
+          
+          // Add error handling to hide images that don't exist
+          img.onerror = function() {
+            this.style.display = 'none';
+          };
+          
+          container.appendChild(img);
+        });
+      }
+    }
+    function loadOrganizationCards(orgName) {
+      const orgData = organizationData.find(org => org.name === orgName);
+      if (!orgData) return;
+      
+      // Update card logo and name
+      document.getElementById('org-card-logo').src = `images/organization/${orgData.fileName}`;
+      document.getElementById('org-card-logo').alt = orgData.displayName;
+      document.getElementById('org-card-name').textContent = orgData.displayName;
+      
+      // Clear existing content
+      document.getElementById('org-certifications').innerHTML = '';
+      document.getElementById('org-training').innerHTML = '';
+      
+      // Load certifications for the organization
+      loadOrganizationCertifications(orgName);
+      
+      // Load training options from the new training-options folder
+      loadTrainingOptions(orgName);
+    }
+    
+    // Function to load assets from organization folder (for certifications)
+    function loadOrganizationAssets(orgName, containerId, prefix = '') {
+      const container = document.getElementById(containerId);
+      const folderPath = `images/organization/${orgName}`;
+      
+      // Try to load images with the naming pattern
+      for (let i = 1; i <= 8; i++) {
+        const img = document.createElement('img');
+        const fileName = prefix ? `${prefix}${i}.png` : `${i}.png`;
+        img.src = `${folderPath}/${fileName}`;
+        img.className = 'w-16 h-16 rounded-lg border border-gray-200';
+        img.alt = `${orgName} ${prefix ? 'Training' : 'Certification'} ${i}`;
+        
+        // Add error handling to hide images that don't exist
+        img.onerror = function() {
+          this.style.display = 'none';
+        };
+        
+        container.appendChild(img);
+      }
+    }
+
+    // New function to load organization certifications from the certification folder
+    function loadOrganizationCertifications(orgName) {
+      const container = document.getElementById('org-certifications');
+      const certifications = organizationCertificationsData[orgName];
+      
+      if (certifications) {
+        certifications.forEach(cert => {
+          const img = document.createElement('img');
+          img.src = `images/certification/${cert.fileName}`;
+          img.className = 'w-16 h-16 rounded-lg border border-gray-200';
+          img.alt = cert.displayName;
+          
+          // Add error handling to hide images that don't exist
+          img.onerror = function() {
+            this.style.display = 'none';
+          };
+          
+          container.appendChild(img);
+        });
+      } else {
+        // Fallback to old method if no certifications are defined for this organization
+        loadOrganizationAssets(orgName, 'org-certifications');
+      }
+    }
+
+    // New function to load training options from the training-options folder
+    function loadTrainingOptions(orgName) {
+      const container = document.getElementById('org-training');
+      const trainingOptions = trainingOptionsData[orgName];
+      
+      if (trainingOptions) {
+        trainingOptions.forEach(option => {
+          const img = document.createElement('img');
+          img.src = `images/training-options/${option.fileName}`;
+          img.className = 'w-16 h-16 rounded-lg border border-gray-200';
+          img.alt = option.displayName;
+          
+          // Add error handling to hide images that don't exist
+          img.onerror = function() {
+            this.style.display = 'none';
+          };
+          
+          container.appendChild(img);
+        });
+      } else {
+        // Fallback to old method if no training options are defined for this organization
+        loadOrganizationAssets(orgName, 'org-training', 'T-');
+      }
+    }
+
+    // Reusable function to dynamically load images (for other sections)
     function loadImages(containerId, folderPath, imageCount, altPrefix, className) {
       const container = document.getElementById(containerId);
       let selectedButton = null;
@@ -525,10 +885,6 @@
           button.classList.add('border-blue');
           selectedButton = button;
         });
-        if (i === 24) {
-          button.classList.add('border-blue');
-          selectedButton = button;
-        }
         container.appendChild(button);
       }
     }
@@ -548,10 +904,12 @@
     // Initialize on DOM loaded
     document.addEventListener('DOMContentLoaded', function() {
       try {
-        // Load images with error handling
+        // Load organizations and certifications with new structure
+        loadOrganizations();
+        loadCertifications();
+        
+        // Load other images with error handling
         const configs = {
-          organization: { count: 52, defaultSelected: 24 },
-          certification: { count: 33, defaultSelected: null },
           training: { count: 15, defaultSelected: null },
           school: { count: 14, defaultSelected: null },
           voucher: { count: 10, defaultSelected: null }
@@ -562,7 +920,7 @@
           const folderPath = `images/${key}`;
           const altPrefix = key.charAt(0).toUpperCase() + key.slice(1);
           
-          loadImages(containerId, folderPath, config.count, altPrefix, 'w-22', config.defaultSelected);
+          loadImages(containerId, folderPath, config.count, altPrefix, 'w-22');
         });
 
         // Load workforce areas
