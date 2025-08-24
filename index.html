@@ -341,7 +341,33 @@
           <h2 class="font-bold text-3xl mb-1">Workforce Related Areas</h2>
           <span>1,000+</span>
         </div>
-        <div id="areas-container" class="w-full flex flex-wrap gap-2 justify-start"></div>
+        <div class="w-full flex lg:flex-row flex-col-reverse gap-2">
+          <div id="areas-container" class="w-full h-fit flex flex-wrap gap-2 justify-start"></div>
+          <!-- Area Card -->
+          <div id="area-card" class="w-full lg:w-[460px] h-fit bg-white rounded-lg overflow-hidden shadow-xl">
+            <div class="bg-blue-500 w-full h-16"></div>
+            <div class="flex flex-col lg:flex-row gap-2 p-4 items-center lg:items-start">
+              <img id="area-card-logo" class="-mt-8 w-24 h-full rounded-lg border border-gray-200" src="images/areas/1-devops.png" alt="">
+              <h4 id="area-card-name" class="font-bold text-lg">DevOps</h4>
+            </div>
+            <div class="p-4">
+              <h3 class="text-base mb-2">Description</h3>
+              <p id="area-description" class="text-sm text-gray-700 mb-4">DevOps is a set of practices that combines software development (Dev) and IT operations (Ops) to shorten the development lifecycle and deliver high quality software continuously.</p>
+            </div>
+            <div class="p-4">
+              <h3 class="text-base mb-2">Industry Organizations</h3>
+              <div id="area-organizations" class="flex flex-wrap gap-2">
+                <!-- Dynamic organization content will be loaded here -->
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-base mb-2">Professional Certifications</h3>
+              <div id="area-certifications" class="flex flex-wrap gap-2">
+                <!-- Dynamic certification content will be loaded here -->
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
     <!-- Call to action -->
@@ -389,18 +415,6 @@
         <div id="voucher-container" class="w-full flex flex-wrap gap-2 justify-start"></div>
       </div>
     </section>
-    <!-- Network -->
-    <!-- <section class="flex flex-col lg:flex-row justify-center items-center gap-4 p-12 h-auto lg:h-min-screen">      
-      <div class="w-full lg:w-fit text-main p-0 lg:pr-24 text-center lg:text-left">
-        <span class="text-xl mb-4">Connect with</span>
-        <h2 class="font-bold text-4xl mb-4">Classmates</h2>
-        <h2 class="font-bold text-4xl mb-4">Instructors</h2>
-        <h2 class="font-bold text-4xl mb-4">Marketplace</h2>
-      </div>
-      <div class="w-full lg:w-1/2 p-18">
-        <img src="images/network.png" alt="Network">
-      </div>
-    </section> -->
     <!-- Call to action -->
     <section>
       <div class="bg-cta p-8 flex flex-col md:flex-row items-center gap-3 justify-center">
@@ -522,6 +536,34 @@
   </footer>
 
   <script>
+    // Workforce areas data with related organizations and certifications
+    const workforceAreasData = {
+      'devops': {
+        id: 20,
+        fileName: '20-devops.png',
+        displayName: 'DevOps',
+        description: 'DevOps is a set of practices that combines software development (Dev) and IT operations (Ops) to shorten the development lifecycle and deliver high quality software continuously.',
+        organizations: [
+          { fileName: '16-aws.png', displayName: 'AWS' },
+          { fileName: '26-google.png', displayName: 'Google Cloud' },
+          { fileName: '2-redhat.png', displayName: 'Red Hat' },
+          { fileName: '7-linux.png', displayName: 'The Linux Foundation' },
+          { fileName: '8-cncf.png', displayName: 'Cloud Native Computing Foundation' },
+          { fileName: '32-hashicorp.png', displayName: 'HashiCorp' }
+        ],
+        certifications: [
+          { fileName: '21-aws.png', displayName: 'AWS Solutions Architect Associate' },
+          { fileName: '34-google.png', displayName: 'Google Cloud Certified Associate' },
+          { fileName: '19-redhat.png', displayName: 'Red Hat Certified System Administrator' },
+          { fileName: '6-cncf.png', displayName: 'Cloud Native Platform Engineering Associate' },
+          { fileName: '3-kubernetes.png', displayName: 'Certified Kubernetes Security Specialist' },
+          { fileName: '1-kubernetes.png', displayName: 'Certified Kubernetes Administrator' },
+          { fileName: '2-kubernetes.png', displayName: 'Certified Kubernetes Application Developer' }
+        ]
+      }
+      // You can add more workforce areas here as needed
+    };
+
     // Certification data with renamed file structure
     const certificationData = [
       { id: 1, name: 'kubernetes', fileName: '1-kubernetes.png', displayName: 'Kubernetes Administrator' },
@@ -556,7 +598,8 @@
       { id: 30, name: 'comptia', fileName: '30-comptia.png', displayName: 'CompTIA DataX' },
       { id: 31, name: 'comptia', fileName: '31-comptia.png', displayName: 'CompTIA AI' },
       { id: 32, name: 'comptia', fileName: '32-comptia.png', displayName: 'CompTIA Project+' },
-      { id: 33, name: 'comptia', fileName: '33-comptia.png', displayName: 'CompTIA Security+' }
+      { id: 33, name: 'comptia', fileName: '33-comptia.png', displayName: 'CompTIA Security+' },
+      { id: 34, name: 'google', fileName: '34-google.png', displayName: 'Google Cloud Certified Associate' }
     ];
 
     // Organization data with renamed file structure
@@ -595,6 +638,107 @@
       { id: 32, name: 'hashicorp', fileName: '32-hashicorp.png', displayName: 'HashiCorp' },
       { id: 33, name: 'unity', fileName: '33-unity.png', displayName: 'Unity' }
     ];
+
+    // Load workforce areas with sequential indexing for images
+        const areas = [
+          '3D Printing | Additive manufacturing', // 1-3dprintingadditivemanufacturing
+          'AECO', // 2-aeco
+          'Aeronautics', // 3-aeronautics
+          'Aerospace', // 4-aerospace
+          'AgriTech', // 5-agritech
+          'Animatronics', // 6-animatronics
+          'AR / VR / MR', // 7-arvrmr
+          'Architectural Design', // 8-architecturaldesign
+          'Artificial Intelligence', // 9-artificialintelligence
+          'Automotive Technology', // 10-automotivetechnology
+          'Aviation', // 11-aviation
+          'Bionics', // 12-bionics
+          'Buildings & Construction', // 13-buildingsconstruction
+          'Business Analysis', // 14-businessanalysis
+          'CAD / CAM', // 15-cadcam
+          'CRM', // 16-crm
+          'Cybersecurity', // 17-cybersecurity
+          'Data Science', // 18-datascience
+          'Design Thinking', // 19-designthinking
+          'DevOps', // 20-devops (has specific data)
+          'Digital Forensics', // 21-digitalforensics
+          'Digital Marketing', // 22-digitalmarketing
+          'Digital Twins', // 23-digitaltwins
+          'Drones', // 24-drones
+          'EdTech', // 25-edtech
+          'Electronics', // 26-electronics
+          'Energy', // 27-energy
+          'Enterprise Architecture', // 28-enterprisearchitecture
+          'Entrepreneurship', // 29-entrepreneurship
+          'EPCM', // 30-epcm
+          'ERP', // 31-erp
+          'Esports', // 32-esports
+          'Ethical Hacking', // 33-ethicalhacking
+          'Event Management', // 34-eventmanagement
+          'Fashion Tech', // 35-fashiontech
+          'Fiber Optics & Data Cabling', // 36-fiberopticsdatacabling
+          'FinTech', // 37-fintech
+          'Games Development', // 38-gamesdevelopment
+          'Generative AI', // 39-generativeai
+          'GRC', // 40-grc
+          'HealthTech', // 41-healthtech
+          'Hospitality', // 42-hospitality
+          'Human Resources', // 43-humanresources
+          'Internet of Things', // 44-internetofthings
+          'ITSM', // 45-itsm
+          'Kubernetes', // 46-kubernetes
+          'Leadership', // 47-leadership
+          'Learning & Development', // 48-learningdevelopment
+          'Legal Tech', // 49-legaltech
+          'Linux', // 50-linux
+          'Machine Learning', // 51-machinelearning
+          'Malware Analysis', // 52-malwareanalysis
+          'Management', // 53-management
+          'Manufacturing', // 54-manufacturing
+          'Material Science', // 55-materialscience
+          'Mechatronics', // 56-mechatronics
+          'Medical Technology', // 57-medicaltechnology
+          'Metaverse', // 58-metaverse
+          'Modeling & Simulation', // 59-modelingsimulation
+          'Nanotechnology', // 60-nanotechnology
+          'Networking', // 61-networking
+          'OKR', // 62-okr
+          'OSINT', // 63-osint
+          'Pentesting', // 64-pentesting
+          'Problem Solving', // 65-problemsolving
+          'Product Management', // 66-productmanagement
+          'Professional Sales', // 67-professionalsales
+          'Programming', // 68-programming
+          'Project Management', // 69-projectmanagement
+          'Prompt Engineering', // 70-promptengineering
+          'Python', // 71-python
+          'Quality Assurance', // 72-qualityassurance
+          'Quantum Computing', // 73-quantumcomputing
+          'Renewable Energy', // 74-renewableenergy
+          'Risk Management', // 75-riskmanagement
+          'Robotics', // 76-robotics
+          'RPA', // 77-rpa
+          'Satellite Communications', // 78-satellitecommunications
+          'SCADA/ICS', // 79-scadaics
+          'Scrum', // 80-scrum
+          'SEO', // 81-seo
+          'Service Provider', // 82-serviceprovider
+          'SIEM', // 83-siem
+          'Six Sigma', // 84-sixsigma
+          'Smart City', // 85-smartcity
+          'SOA', // 86-soa
+          'Social Media Management', // 87-socialmediamanagement
+          'Software Architecture', // 88-softwarearchitecture
+          'Space Technology', // 89-spacetechnology
+          'SRE', // 90-sre
+          'STE(A)M', // 91-steam
+          'Supply Chain Management', // 92-supplychainmanagement
+          'SysAdmin', // 93-sysadmin
+          'Transportation & Mobility', // 94-transportationmobility
+          'UX / UI', // 95-uxui
+          'Wearable Technology', // 96-wearabletechnology
+          'Wireless' // 97-wireless
+        ];
 
     // Training options data for the new structure
     const trainingOptionsData = {
@@ -640,6 +784,163 @@
       // You can add more certification types and their related certifications here
     };
 
+    // Function to load workforce area pills with click functionality
+    function loadAreas(areas) {
+      const container = document.getElementById('areas-container');
+      container.innerHTML = ''; // Clear existing content
+      let selectedPill = null;
+      let areaIndex = 1; // Start from 1 for image naming
+      
+      areas.forEach((area, index) => {
+        const pill = document.createElement('button');
+        pill.textContent = area;
+        pill.className = 'px-3 py-2 bg-white text-main text-sm font-medium rounded-lg cursor-pointer hover:text-blue-500 hover:bg-blue-100 transition duration-300';
+        
+        // Convert area name to key for data lookup
+        const areaKey = area.toLowerCase().replace(/[^a-z0-9]/g, '');
+        pill.dataset.areaKey = areaKey;
+        pill.dataset.areaIndex = areaIndex;
+        pill.dataset.areaName = area;
+        
+        // pill.addEventListener('click', function() {
+        //   if (selectedPill) {
+        //     selectedPill.classList.remove('border-blue', 'text-blue-500', 'bg-blue-100');
+        //   }
+        //   pill.classList.add('border-blue', 'text-blue-500', 'bg-blue-100');
+        //   selectedPill = pill;
+          
+        //   // Always load area card - either with specific data or generic
+        //   loadAreaCard(areaKey, areaIndex, area);
+        // });
+        
+        // Set DevOps as default selected
+        if (area === 'DevOps') {
+          pill.classList.add('border-blue', 'text-blue-500', 'bg-blue-100');
+          selectedPill = pill;
+          loadAreaCard('devops', areaIndex, area);
+        }
+        
+        container.appendChild(pill);
+        areaIndex++;
+      });
+    }
+
+    // Function to load area card content
+    function loadAreaCard(areaKey, areaIndex, areaName) {
+      // Check if we have specific data for this area
+      const areaData = workforceAreasData[areaKey];
+      
+      if (areaData) {
+        // Use specific data if available
+        document.getElementById('area-card-logo').src = `images/areas/${areaData.fileName}`;
+        document.getElementById('area-card-logo').alt = areaData.displayName;
+        document.getElementById('area-card-name').textContent = areaData.displayName;
+        document.getElementById('area-description').textContent = areaData.description;
+        
+        // Clear existing content
+        document.getElementById('area-organizations').innerHTML = '';
+        document.getElementById('area-certifications').innerHTML = '';
+        
+        // Load specific organizations and certifications
+        loadAreaOrganizations(areaData.organizations);
+        loadAreaCertifications(areaData.certifications);
+      } else {
+        // Use generic structure for areas without specific data
+        document.getElementById('area-card-logo').src = `images/areas/${areaIndex}-${areaKey}.png`;
+        document.getElementById('area-card-logo').alt = areaName;
+        document.getElementById('area-card-name').textContent = areaName;
+        document.getElementById('area-description').textContent = `Explore career opportunities and educational pathways in ${areaName}. Connect with industry organizations, professional certifications, and training providers.`;
+        
+        // Clear existing content
+        document.getElementById('area-organizations').innerHTML = '';
+        document.getElementById('area-certifications').innerHTML = '';
+        
+        // Load generic organizations and certifications from area folder
+        loadGenericAreaAssets(areaIndex, areaKey);
+      }
+    }
+
+    // Function to load generic area assets (similar to organization structure)
+    function loadGenericAreaAssets(areaIndex, areaKey) {
+      const orgContainer = document.getElementById('area-organizations');
+      const certContainer = document.getElementById('area-certifications');
+      const folderPath = `images/areas/${areaIndex}-${areaKey}`;
+      
+      // Try to load organization images (O-1.png, O-2.png, etc.)
+      for (let i = 1; i <= 8; i++) {
+        const orgImg = document.createElement('img');
+        orgImg.src = `${folderPath}/O-${i}.png`;
+        orgImg.className = 'w-16 h-16 rounded-lg border border-gray-200';
+        orgImg.alt = `${areaKey} Organization ${i}`;
+        orgImg.title = `Related Organization ${i}`;
+        
+        // Add error handling to hide images that don't exist
+        orgImg.onerror = function() {
+          this.style.display = 'none';
+        };
+        
+        orgContainer.appendChild(orgImg);
+      }
+      
+      // Try to load certification images (C-1.png, C-2.png, etc.)
+      for (let i = 1; i <= 8; i++) {
+        const certImg = document.createElement('img');
+        certImg.src = `${folderPath}/C-${i}.png`;
+        certImg.className = 'w-16 h-16 rounded-lg border border-gray-200';
+        certImg.alt = `${areaKey} Certification ${i}`;
+        certImg.title = `Related Certification ${i}`;
+        
+        // Add error handling to hide images that don't exist
+        certImg.onerror = function() {
+          this.style.display = 'none';
+        };
+        
+        certContainer.appendChild(certImg);
+      }
+    }
+
+    // Function to load area organizations
+    function loadAreaOrganizations(organizations) {
+      const container = document.getElementById('area-organizations');
+      
+      organizations.forEach(org => {
+        const img = document.createElement('img');
+        img.src = `images/organization/${org.fileName}`;
+        img.className = 'w-16 h-16 rounded-lg border border-gray-200';
+        img.alt = org.displayName;
+        img.title = org.displayName; // Tooltip
+        
+        // Add error handling to hide images that don't exist
+        img.onerror = function() {
+          this.style.display = 'none';
+          console.warn(`Missing organization image: ${org.fileName}`);
+        };
+        
+        container.appendChild(img);
+      });
+    }
+
+    // Function to load area certifications
+    function loadAreaCertifications(certifications) {
+      const container = document.getElementById('area-certifications');
+      
+      certifications.forEach(cert => {
+        const img = document.createElement('img');
+        img.src = `images/certification/${cert.fileName}`;
+        img.className = 'w-16 h-16 rounded-lg border border-gray-200';
+        img.alt = cert.displayName;
+        img.title = cert.displayName; // Tooltip
+        
+        // Add error handling to hide images that don't exist
+        img.onerror = function() {
+          this.style.display = 'none';
+          console.warn(`Missing certification image: ${cert.fileName}`);
+        };
+        
+        container.appendChild(img);
+      });
+    }
+
     // Function to load certification images with new structure
     function loadCertifications() {
       const container = document.getElementById('certification-container');
@@ -657,14 +958,15 @@
         img.className = 'w-22';
         
         button.appendChild(img);
-        button.addEventListener('click', function() {
-          if (selectedButton) {
-            selectedButton.classList.remove('border-blue');
-          }
-          button.classList.add('border-blue');
-          selectedButton = button;
-          loadCertificationCards(cert.name, cert.fileName, cert.displayName);
-        });
+        
+        // button.addEventListener('click', function() {
+        //   if (selectedButton) {
+        //     selectedButton.classList.remove('border-blue');
+        //   }
+        //   button.classList.add('border-blue');
+        //   selectedButton = button;
+        //   loadCertificationCards(cert.name, cert.fileName, cert.displayName);
+        // });
         
         // Default selection (Certified Kubernetes Security Specialist - ID 3)
         if (cert.id === 3) {
@@ -693,14 +995,15 @@
         img.className = 'w-22';
         
         button.appendChild(img);
-        button.addEventListener('click', function() {
-          if (selectedButton) {
-            selectedButton.classList.remove('border-blue');
-          }
-          button.classList.add('border-blue');
-          selectedButton = button;
-          loadOrganizationCards(org.name);
-        });
+        
+        // button.addEventListener('click', function() {
+        //   if (selectedButton) {
+        //     selectedButton.classList.remove('border-blue');
+        //   }
+        //   button.classList.add('border-blue');
+        //   selectedButton = button;
+        //   loadOrganizationCards(org.name);
+        // });
         
         // Default selection (CompTIA)
         if (org.id === 1) {
@@ -774,6 +1077,7 @@
         });
       }
     }
+
     function loadOrganizationCards(orgName) {
       const orgData = organizationData.find(org => org.name === orgName);
       if (!orgData) return;
@@ -878,6 +1182,7 @@
         img.alt = `${altPrefix} ${i}`;
         img.className = className;
         button.appendChild(img);
+        
         button.addEventListener('click', function() {
           if (selectedButton) {
             selectedButton.classList.remove('border-blue');
@@ -885,20 +1190,9 @@
           button.classList.add('border-blue');
           selectedButton = button;
         });
+
         container.appendChild(button);
       }
-    }
-
-    // Function to load pills dynamically
-    function loadAreas(areas) {
-      const container = document.getElementById('areas-container');
-      container.innerHTML = ''; // Clear existing content
-      areas.forEach(area => {
-        const pill = document.createElement('div');
-        pill.textContent = area;
-        pill.className = 'px-3 py-2 bg-white text-main text-sm font-medium rounded-lg cursor-pointer hover:text-blue-500 hover:bg-blue-100 transition duration-300';
-        container.appendChild(pill);
-      });
     }
 
     // Initialize on DOM loaded
@@ -922,34 +1216,9 @@
           
           loadImages(containerId, folderPath, config.count, altPrefix, 'w-22');
         });
-
-        // Load workforce areas
-        const areas = [
-          '3D Printing | Additive manufacturing', 'AECO', 'Aeronautics', 'Aerospace', 'AgriTech',
-          'Animatronics', 'AR / VR / MR', 'Architectural Design', 'Artificial Intelligence', 'Automotive Technology',
-          'Aviation', 'Bionics', 'Buildings & Construction', 'Business Analysis', 'CAD / CAM',
-          'CRM', 'Cybersecurity', 'Data Science', 'Design Thinking', 'DevOps',
-          'Digital Forensics', 'Digital Marketing', 'Digital Twins', 'Drones', 'EdTech',
-          'Electronics', 'Energy', 'Enterprise Architecture', 'Entrepreneurship', 'EPCM',
-          'ERP', 'Esports', 'Ethical Hacking', 'Event Management', 'Fashion Tech',
-          'Fiber Optics & Data Cabling', 'FinTech', 'Games Development', 'Generative AI', 'GRC',
-          'HealthTech', 'Hospitality', 'Human Resources', 'Internet of Things', 'ITSM',
-          'Kubernetes', 'Leadership', 'Learning & Development', 'Legal Tech', 'Linux',
-          'Machine Learning', 'Malware Analysis', 'Management', 'Manufacturing', 'Material Science',
-          'Mechatronics', 'Medical Technology', 'Metaverse', 'Modeling & Simulation', 'Nanotechnology',
-          'Networking', 'OKR', 'OSINT', 'Pentesting', 'Problem Solving',
-          'Product Management', 'Professional Sales', 'Programming', 'Project Management', 'Prompt Engineering',
-          'Python', 'Quality Assurance', 'Quantum Computing', 'Renewable Energy', 'Risk Management',
-          'Robotics', 'RPA', 'Satellite Communications', 'SCADA/ICS', 'Scrum',
-          'SEO', 'Service Provider', 'SIEM', 'Six Sigma', 'Smart City',
-          'SOA', 'Social Media Management', 'Software Architecture', 'Space Technology', 'SRE',
-          'STE(A)M', 'Supply Chain Management', 'SysAdmin', 'Transportation & Mobility', 'UX / UI',
-          'Wearable Technology', 'Wireless'
-        ];
         
         loadAreas(areas);
-        
-        console.log('Grytte landing page initialized successfully');
+      
         
       } catch (error) {
         console.error('Error initializing page:', error);
